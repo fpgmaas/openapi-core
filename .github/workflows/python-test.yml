@@ -58,6 +58,10 @@ jobs:
       - name: Static type check
         run: poetry run mypy
 
+      - name: Check dependencies
+        run: poetry run deptry .
+        if: ${{ matrix.python-version != '3.7' }}
+
       - name: Upload coverage
         uses: codecov/codecov-action@v1
 
